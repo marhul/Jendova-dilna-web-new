@@ -278,3 +278,4 @@ dialog.lightbox button:hover { background: rgba(255, 255, 255, 0.24); }
 .prose > :first-child { margin-top: 0; }
 .post-gallery-title { margin: 40px 0 16px; }
 .article .gallery { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+.prose p > img { max-height: 560px; width: auto; margin: 0 auto; }
