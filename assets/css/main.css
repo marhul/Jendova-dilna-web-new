@@ -276,3 +276,5 @@ dialog.lightbox button:hover { background: rgba(255, 255, 255, 0.24); }
 @media (max-width: 520px) { .site-footer .cols { grid-template-columns: 1fr; } }
 .visually-hidden:focus { position: fixed !important; top: 8px; left: 8px; width: auto; height: auto; clip: auto; z-index: 100; background: var(--ink); color: #fff; padding: 10px 14px; border-radius: 8px; }
 .prose > :first-child { margin-top: 0; }
+.post-gallery-title { margin: 40px 0 16px; }
+.article .gallery { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }

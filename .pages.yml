@@ -37,6 +37,7 @@ content:
         options: { time: true, format: "yyyy-MM-dd HH:mm" }
         description: Vyplňte u pozvánek. Akce se pak sama ukáže v „Nejbližší v dílně“ na úvodní stránce a po termínu zmizí.
       - { name: cover_image, label: Hlavní obrázek, type: image, options: { media: images } }
+      - { name: galerie, label: Fotky pod článkem, type: image, list: true, options: { media: images } }
       - { name: body, label: Text, type: rich-text }
 
   # Kroužky – z těchto záznamů se skládají karty i týdenní rozvrh

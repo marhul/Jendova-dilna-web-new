@@ -15,6 +15,15 @@ layout: default
     <div class="prose">
       {{ content }}
     </div>
+    {% if page.galerie and page.galerie.size > 0 %}
+    <h2 class="post-gallery-title">Fotky</h2>
+    <div class="gallery" data-gallery>
+      {%- for foto in page.galerie %}
+      <button type="button" data-src="{{ foto }}"><img src="{{ foto }}" alt="Fotografie: {{ page.title }}" loading="lazy"></button>
+      {%- endfor %}
+    </div>
+    {% include lightbox.html %}
+    {% endif %}
     <a class="back" href="/aktuality/">← Všechny aktuality</a>
   </article>
 </div>

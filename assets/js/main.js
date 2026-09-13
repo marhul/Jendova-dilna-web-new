@@ -52,7 +52,7 @@
   var gallery = document.querySelector('[data-gallery]');
   var dialog = document.querySelector('[data-lightbox]');
   if (gallery && dialog && typeof dialog.showModal === 'function') {
-    var buttons = Array.prototype.slice.call(gallery.querySelectorAll('[data-src]'));
+    var buttons = Array.prototype.slice.call(document.querySelectorAll('[data-gallery] [data-src]'));
     var img = dialog.querySelector('img');
     var index = 0;
     var show = function (i) {
