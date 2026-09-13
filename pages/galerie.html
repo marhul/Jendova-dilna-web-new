@@ -1,0 +1,35 @@
+---
+layout: default
+title: Galerie
+description: Fotografie z Jendovy dílny.
+permalink: /galerie/
+---
+<div class="page-head">
+  <div class="wrap">
+    <h1>Galerie</h1>
+    <p class="sub">Výrobky, kroužky a akce v dílně. Kliknutím fotku zvětšíte.</p>
+  </div>
+</div>
+<div class="page-body">
+  <div class="wrap">
+    <div class="gallery" data-gallery>
+      {%- assign fotky = site.static_files | where_exp: "f", "f.path contains '/img/photos/'" %}
+      {%- for f in fotky %}
+      {%- assign ext = f.extname | downcase %}
+      {%- unless f.basename contains "lektor" %}
+      {%- if ext == '.jpg' or ext == '.jpeg' or ext == '.png' or ext == '.webp' %}
+      <button type="button" data-src="{{ f.path }}"><img src="{{ f.path }}" alt="Fotografie z dílny" loading="lazy"></button>
+      {%- endif %}
+      {%- endunless %}
+      {%- endfor %}
+    </div>
+  </div>
+</div>
+<dialog class="lightbox" data-lightbox aria-label="Zvětšená fotografie">
+  <img src="" alt="">
+  <div class="lb-bar">
+    <button type="button" data-lb="prev">← Předchozí</button>
+    <button type="button" data-lb="close">Zavřít</button>
+    <button type="button" data-lb="next">Další →</button>
+  </div>
+</dialog>

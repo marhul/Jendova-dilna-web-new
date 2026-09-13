@@ -1,0 +1,6 @@
+# Kategorie kroužků – barva štítku na kartě i v týdenním rozvrhu
+keramika: { nazev: Keramika, barva: "#EFDDCC", text: "#6B4229" }
+veda: { nazev: Věda a pokusy, barva: "#D8E9E2", text: "#1F4E44" }
+recyklace: { nazev: Recyklace, barva: "#F3E3BC", text: "#6A4F12" }
+jazyky: { nazev: Jazyky, barva: "#E1E3EF", text: "#383D66" }
+technika: { nazev: Technika, barva: "#E6DEEE", text: "#4E3566" }

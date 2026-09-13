@@ -1,0 +1,22 @@
+{% if site.staging %}
+<div class="staging-bar">Testovací verze nového webu. Aktuální web je na <a href="https://jendovadilna.cz/">jendovadilna.cz</a>.</div>
+{% endif %}
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <img src="{{ site.logo }}" alt="" width="42" height="42">
+      <span>Jendova dílna</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="hlavni-menu">Menu</button>
+    <nav class="nav" id="hlavni-menu" aria-label="Hlavní menu">
+      {%- for item in site.navigace -%}
+        {%- assign current = false -%}
+        {%- if page.url == item.url -%}{%- assign current = true -%}{%- endif -%}
+        {%- if item.url == '/krouzky/' and page.collection == 'krouzky' -%}{%- assign current = true -%}{%- endif -%}
+        {%- if item.url == '/aktuality/' and page.collection == 'posts' -%}{%- assign current = true -%}{%- endif %}
+      <a href="{{ item.url }}"{% if current %} aria-current="page"{% endif %}>{{ item.title }}</a>
+      {%- endfor %}
+      <a class="btn btn-ochre" href="/o-spolku/#podpora">Podpořit dílnu</a>
+    </nav>
+  </div>
+</header>

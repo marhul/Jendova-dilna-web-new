@@ -1,0 +1,45 @@
+---
+layout: default
+---
+{%- assign kat = site.data.kategorie[page.kategorie] -%}
+{%- assign den = site.data.dny[page.den] -%}
+{%- assign sr = site.data.nastaveni.skolni_rok -%}
+<div class="page-head">
+  <div class="wrap">
+    <div class="tags" style="margin-bottom:14px">
+      <a class="tag" href="/krouzky/" style="text-decoration:none">← Kroužky</a>
+      {% if kat %}<span class="tag" style="background:{{ kat.barva }};color:{{ kat.text }}">{{ kat.nazev }}</span>{% endif %}
+    </div>
+    <h1>{{ page.title }}</h1>
+    {% if page.podtitul %}<p class="sub">{{ page.podtitul }}</p>{% endif %}
+  </div>
+</div>
+<div class="page-body">
+  <div class="wrap detail">
+    <div class="prose">
+      {{ content }}
+      <p>Nevíte si rady s výběrem nebo máte dotaz? <a href="/kontakty/">Napište nám nebo zavolejte.</a></p>
+    </div>
+    <aside>
+      <div class="facts">
+        <dl>
+          {% if page.vek %}<dt>Věk</dt><dd>{{ page.vek }}</dd>{% endif %}
+          {% if den %}<dt>Kdy</dt><dd>{{ den.nazev }} {{ page.cas_od }}–{{ page.cas_do }}</dd>{% endif %}
+          {% if page.termin %}<dt>Termín</dt><dd>{{ page.termin }}</dd>{% endif %}
+          {% if page.lekci %}<dt>Lekcí</dt><dd>{{ page.lekci }}</dd>{% endif %}
+          {% if page.kapacita %}<dt>Kapacita</dt><dd>{{ page.kapacita }}</dd>{% endif %}
+          {% if page.cena and page.cena != "" %}<dt>Cena</dt><dd>{{ page.cena }}</dd>{% endif %}
+          {% if page.lektor %}<dt>Lektor</dt><dd><a href="/lektori/">{{ page.lektor }}</a></dd>{% endif %}
+          <dt>Kde</dt><dd>{{ site.data.nastaveni.adresa }}</dd>
+        </dl>
+        {% if page.prihlaska_url and page.prihlaska_url != "" %}
+        <a class="btn btn-primary" href="{{ page.prihlaska_url }}" rel="noopener" style="justify-content:center">{{ page.prihlaska_text | default: "Přihláška" }} ↗</a>
+        {% if page.prihlaska_poznamka %}<p class="note">{{ page.prihlaska_poznamka }}</p>{% endif %}
+        {% if page.prihlaska_url contains "ddmcb" %}<p class="note">Kroužek zřizuje {{ sr.zrizovatel }}. {{ sr.prihlasky_text }}</p>{% endif %}
+        {% else %}
+        <a class="btn btn-ghost" href="/kontakty/" style="justify-content:center">Zeptat se na volná místa</a>
+        {% endif %}
+      </div>
+    </aside>
+  </div>
+</div>

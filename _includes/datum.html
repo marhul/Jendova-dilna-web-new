@@ -1,0 +1,12 @@
+{%- comment -%}
+  Česky formátované datum akce.
+  include.d = „YYYY-MM-DD HH:MM“, include.format = "box" (štítek) nebo prázdné (text).
+{%- endcomment -%}
+{%- assign m = include.d | date: "%-m" | minus: 1 -%}
+{%- assign mesic = site.data.mesice[m] -%}
+{%- assign cas = include.d | date: "%H:%M" -%}
+{%- if include.format == "box" -%}
+<span class="datebox">{{ include.d | date: "%-d" }}<small>{{ mesic.zkr }}</small></span>
+{%- else -%}
+{{ include.d | date: "%-d" }}. {{ mesic.gen }} {{ include.d | date: "%Y" }}{% if cas != "00:00" %} od {{ cas }}{% endif %}
+{%- endif -%}

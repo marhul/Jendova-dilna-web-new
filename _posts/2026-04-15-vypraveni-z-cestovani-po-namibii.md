@@ -2,7 +2,9 @@
 layout: post
 title: Vyprávění z cestování po Namibii
 date: 15.4.2026
-cover_image: /img/20260517_Namibie.jpg
+typ: Cestovatelský večer
+akce_datum: 2026-05-17 19:30
+cover_image: /img/20260517_namibie.jpg
 ---
 Zveme vás na cestovatelský večer věnovaný Namibii – zemi nekonečných písků, dramatických krajin a výjimečné divočiny. Filip a Gábina vás vezmou mezi oranžové duny, vyprahlé pláně i za zvířaty, která se v poušti umí dokonale přizpůsobit.
 

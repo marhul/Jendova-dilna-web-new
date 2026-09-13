@@ -1,0 +1,15 @@
+{%- assign p = include.p -%}
+<a class="post-card" href="{{ p.url }}">
+  {%- if p.cover_image %}
+  <div class="ph"><img src="{{ p.cover_image }}" alt="" loading="lazy"></div>
+  {%- else %}
+  <div class="ph empty" aria-hidden="true">JD</div>
+  {%- endif %}
+  <div class="body">
+    <div class="meta">
+      {% if p.typ %}<span>{{ p.typ }}</span>{% endif %}
+      {% if p.akce_datum %}<span>{% include datum.html d=p.akce_datum %}</span>{% else %}<span>{{ p.date | date: "%-d. %-m. %Y" }}</span>{% endif %}
+    </div>
+    <h3>{{ p.title }}</h3>
+  </div>
+</a>

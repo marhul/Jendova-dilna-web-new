@@ -1,0 +1,40 @@
+{% assign s = site.data.nastaveni %}
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="brand" href="/"><img src="{{ site.logo }}" alt="" width="42" height="42"><span>Jendova dílna</span></a>
+        <p>Tvoření, setkávání a sdílení v Českých Budějovicích.</p>
+      </div>
+      <div>
+        <h4>Kde nás najdete</h4>
+        <ul>
+          <li><a href="{{ s.mapa_url }}">{{ s.adresa }}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:{{ s.email }}">{{ s.email }}</a></li>
+          <li><a href="tel:{{ s.telefon | remove: ' ' }}">{{ s.telefon }}</a></li>
+          {% if s.facebook != "" %}<li><a href="{{ s.facebook }}">Facebook</a></li>{% endif %}
+          {% if s.instagram != "" %}<li><a href="{{ s.instagram }}">Instagram</a></li>{% endif %}
+          {% if s.whatsapp != "" %}<li><a href="{{ s.whatsapp }}">WhatsApp skupina</a></li>{% endif %}
+        </ul>
+      </div>
+      <div>
+        <h4>Rychlé odkazy</h4>
+        <ul>
+          <li><a href="/krouzky/">Kroužky a rozvrh</a></li>
+          <li><a href="/kalendar/">Akce a kalendář</a></li>
+          <li><a href="/o-spolku/#podpora">Podpořit dílnu</a></li>
+          <li><a href="/feed.xml">RSS aktualit</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>{{ s.nazev_spolku }} · IČO {{ s.ico }}</span>
+      <span>© {{ site.time | date: '%Y' }}</span>
+    </div>
+  </div>
+</footer>

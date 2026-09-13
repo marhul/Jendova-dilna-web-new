@@ -1,0 +1,53 @@
+---
+layout: default
+title: Naši lektoři
+description: Lektoři, kteří v Jendově dílně provázejí děti i dospělé tvořením.
+permalink: /lektori/
+---
+{%- assign lektori = site.lektori | sort: "poradi" -%}
+{%- assign jmena = lektori | map: "jmeno" -%}
+{%- assign aktivni = site.krouzky | where: "aktivni", true | sort: "poradi" -%}
+<div class="page-head">
+  <div class="wrap">
+    <h1>Naši lektoři</h1>
+    <p class="sub">Za každým kroužkem stojí člověk, který děti podporuje, motivuje a pomáhá jim objevovat radost z tvoření. Vedou je s klidem, trpělivostí a respektem.</p>
+  </div>
+</div>
+<div class="page-body">
+  <div class="wrap">
+    <div class="people">
+      {%- for l in lektori %}
+      {%- assign jeho = aktivni | where: "lektor", l.jmeno %}
+      <article class="person" id="{{ l.slug }}">
+        <div class="photo">
+          {% if l.foto and l.foto != "" %}<img src="{{ l.foto }}" alt="{{ l.jmeno }}" loading="lazy">{% else %}<span aria-hidden="true">{{ l.jmeno | slice: 0 }}</span>{% endif %}
+        </div>
+        <div>
+          <h2>{{ l.jmeno }}</h2>
+          <div class="prose">{{ l.content }}</div>
+          {% if jeho.size > 0 or l.dalsi_kurzy.size > 0 %}
+          <div class="leads">
+            <span class="label">Vede:</span>
+            {% for k in jeho %}<a class="tag" href="{{ k.url }}" style="text-decoration:none">{{ k.title }}</a>{% endfor %}
+            {% for d in l.dalsi_kurzy %}<span class="tag">{{ d }}</span>{% endfor %}
+          </div>
+          {% endif %}
+        </div>
+      </article>
+      {%- endfor %}
+    </div>
+
+    {%- assign bez_profilu = "" | split: "" %}
+    {%- for k in aktivni %}{% unless jmena contains k.lektor %}{% assign bez_profilu = bez_profilu | push: k.lektor %}{% endunless %}{% endfor %}
+    {%- assign bez_profilu = bez_profilu | uniq %}
+    {% if bez_profilu.size > 0 %}
+    <h2 style="margin:56px 0 18px">Další lektoři</h2>
+    <div class="people-mini">
+      {% for jmeno in bez_profilu %}
+      {% assign jeho = aktivni | where: "lektor", jmeno %}
+      <div><strong>{{ jmeno }}</strong><p>{% for k in jeho %}<a href="{{ k.url }}">{{ k.title }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}</p></div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</div>

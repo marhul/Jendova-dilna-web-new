@@ -2,6 +2,8 @@
 layout: post
 title: Promítání z cestování po Ománu
 date: 21.2.2026
+typ: Cestovatelský večer
+akce_datum: 2026-03-15 18:00
 cover_image: /img/4bb2dda9-7f19-45d7-adb7-c2486910b5df.jpg
 ---
 Zveme vás na cestovatelský večer o Ománu – zemi písku, hor a vůně kadidla.

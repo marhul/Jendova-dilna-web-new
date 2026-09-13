@@ -1,0 +1,8 @@
+# Klíč dne → název a pořadí v týdnu
+po: { nazev: Pondělí, zkratka: Po, poradi: 1 }
+ut: { nazev: Úterý, zkratka: Út, poradi: 2 }
+st: { nazev: Středa, zkratka: St, poradi: 3 }
+ct: { nazev: Čtvrtek, zkratka: Čt, poradi: 4 }
+pa: { nazev: Pátek, zkratka: Pá, poradi: 5 }
+so: { nazev: Sobota, zkratka: So, poradi: 6 }
+ne: { nazev: Neděle, zkratka: Ne, poradi: 7 }

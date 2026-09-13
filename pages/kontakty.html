@@ -1,0 +1,43 @@
+---
+layout: default
+title: Kontakt
+description: Adresa, e-mail a telefon Jendovy dílny v Českých Budějovicích.
+permalink: /kontakty/
+---
+{%- assign s = site.data.nastaveni -%}
+<div class="page-head">
+  <div class="wrap">
+    <h1>Kontakt</h1>
+    <p class="sub">Máte dotaz ke kroužku nebo akci? Napište nebo zavolejte.</p>
+  </div>
+</div>
+<div class="page-body">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <span class="eyebrow">E-mail</span>
+        <a class="big" href="mailto:{{ s.email }}">{{ s.email }}</a>
+      </div>
+      <div>
+        <span class="eyebrow">Telefon</span>
+        <a class="big" href="tel:{{ s.telefon | remove: ' ' }}">{{ s.telefon }}</a>
+      </div>
+      <div>
+        <span class="eyebrow">Adresa dílny</span>
+        <span class="big">{{ s.adresa }}</span>
+        <a href="{{ s.mapa_url }}" rel="noopener">Otevřít v Mapy.com ↗</a>
+      </div>
+    </div>
+
+    <div class="prose" style="margin-top:48px">
+      <h2>Sledujte nás</h2>
+      <p>Pozvánky a fotky z dílny sdílíme na
+        {% if s.facebook != "" %}<a href="{{ s.facebook }}" rel="noopener">Facebooku</a>{% endif %}{% if s.facebook != "" and s.instagram != "" %} a {% endif %}
+        {% if s.instagram != "" %}<a href="{{ s.instagram }}" rel="noopener">Instagramu</a>{% endif %}.
+        {% if s.whatsapp != "" %}Připojit se můžete i do <a href="{{ s.whatsapp }}" rel="noopener">WhatsApp skupiny</a>.{% endif %}
+      </p>
+      <h2>Spolek</h2>
+      <p>{{ s.nazev_spolku }}, IČO {{ s.ico }}. Číslo účtu pro dary: <strong>{{ s.ucet }}</strong> (<a href="/o-spolku/#podpora">QR platba a potvrzení o daru</a>).</p>
+    </div>
+  </div>
+</div>

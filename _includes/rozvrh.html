@@ -1,0 +1,35 @@
+{%- comment -%} Týdenní rozvrh sestavený z kolekce _krouzky (jen aktivní). {%- endcomment -%}
+{%- assign aktivni = site.krouzky | where: "aktivni", true -%}
+{%- assign casy = aktivni | map: "cas_od" | uniq | sort -%}
+{%- assign klice = "po,ut,st,ct,pa,so,ne" | split: "," -%}
+<div class="week">
+  <div class="week-grid" role="table" aria-label="Týdenní rozvrh kroužků">
+    <div class="wh" role="columnheader"><span class="visually-hidden">Čas</span></div>
+    {%- for d in klice %}
+    <div class="wh" role="columnheader">{{ site.data.dny[d].zkratka }}</div>
+    {%- endfor %}
+    {%- for cas in casy %}
+    <div class="wt" role="rowheader">{{ cas }}</div>
+      {%- for d in klice %}
+      {%- assign vbunce = aktivni | where: "den", d | where: "cas_od", cas %}
+    <div role="cell">
+        {%- for k in vbunce %}{% assign kat = site.data.kategorie[k.kategorie] %}
+      <a class="slot" href="{{ k.url }}" style="background:{{ kat.barva }};color:{{ kat.text }}">{{ k.title }}<small>{{ k.cas_od }}–{{ k.cas_do }} · {{ k.vek }}</small></a>
+        {%- endfor %}
+    </div>
+      {%- endfor %}
+    {%- endfor %}
+  </div>
+  <div class="week-list">
+    {%- for d in klice %}
+    {%- assign vden = aktivni | where: "den", d | sort: "cas_od" %}
+    {%- if vden.size > 0 %}
+    <div class="day"><strong>{{ site.data.dny[d].zkratka }}</strong><div>
+      {%- for k in vden %}{% assign kat = site.data.kategorie[k.kategorie] %}
+      <a class="slot" href="{{ k.url }}" style="background:{{ kat.barva }};color:{{ kat.text }}">{{ k.title }}<small>{{ k.cas_od }}–{{ k.cas_do }} · {{ k.vek }}</small></a>
+      {%- endfor %}
+    </div></div>
+    {%- endif %}
+    {%- endfor %}
+  </div>
+</div>

@@ -2,7 +2,7 @@
 layout: page
 title: Workshop
 subtitle: Informace k workshopu kde se budou sestavovat roboti z dilu z 3D tiskarny
-cover_image: /img/bambu-lab-cyberbrick-ultimate-hardware-kit-862654-cs.png
+cover_image: /img/bambu-lab-cyberbrick-ultimate-hardware-kit-862654-cs.jpg
 permalink: /roboworkshop/
 ---
 # Workshop: Sestav si vlastního robota 🤖
@@ -11,7 +11,7 @@ permalink: /roboworkshop/
 Přijď si vyzkoušet praktický workshop, kde si **vlastnoručně sestavíš robota na dálkové ovládání**.  
 Workshop je zaměřený na práci s mechanikou, elektronikou a logickým uvažováním – vše hravou a srozumitelnou formou.
 
-![CyberBrick hardware kit](/img/bambu-lab-cyberbrick-ultimate-hardware-kit-862654-cs.png)
+![CyberBrick hardware kit](/img/bambu-lab-cyberbrick-ultimate-hardware-kit-862654-cs.jpg)
 
 ---
 
@@ -28,7 +28,7 @@ Během workshopu si účastníci:
 Roboti, které budeme na workshopu stavět, vychází z oficiální platformy **Bambu Lab CyberBrick**:  
 👉 [CyberBrick SoccerBot – oficiální produkt](https://eu.store.bambulab.com/products/cyberbrick-official-soccerbot)
 
-![SoccerBot](/img/SoccerBot.jpg)
+![SoccerBot](/img/soccerbot.jpg)
 
 ---
 

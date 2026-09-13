@@ -1,0 +1,31 @@
+---
+layout: default
+title: Akce a kalendář
+description: Plánované akce, workshopy a kroužky v Jendově dílně s možností rezervace.
+permalink: /kalendar/
+redirect_from:
+  - /kalendar2/
+---
+{%- assign akce = site.posts | where_exp: "p", "p.akce_datum" | sort: "akce_datum" | reverse -%}
+<div class="page-head">
+  <div class="wrap">
+    <h1>Akce a kalendář</h1>
+    <p class="sub">Workshopy, cestovatelské večery a kroužky. Místa na akce si můžete rezervovat přímo v kalendáři.</p>
+  </div>
+</div>
+<div class="page-body">
+  <div class="wrap">
+    <div class="embed-wrap">
+      <iframe class="embed-iframe" src="{{ site.data.nastaveni.kalendar_url }}/calendar/embed?view=month" title="Kalendář Jendovy dílny" loading="lazy"></iframe>
+      <p style="margin-top:10px;font-size:.9rem;color:var(--muted)">Kalendář se nenačetl? <a href="{{ site.data.nastaveni.kalendar_url }}" rel="noopener">Otevřete ho v novém okně ↗</a></p>
+    </div>
+
+    <div class="section-head" style="margin-top:56px;margin-bottom:18px">
+      <h2>Pozvánky na akce</h2>
+      <a class="btn btn-ghost" href="/aktuality/">Všechny aktuality</a>
+    </div>
+    <div class="posts">
+      {% for p in akce limit: 6 %}{% include post-karta.html p=p %}{% endfor %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+---
+layout: default
+title: Kroužky
+description: Nabídka kroužků v Jendově dílně pro děti, mládež i dospělé – keramika, pokusy, recyklace, angličtina a 3D tisk.
+permalink: /krouzky/
+redirect_from:
+  - /index/
+---
+{%- assign sr = site.data.nastaveni.skolni_rok -%}
+{%- assign vsechny = site.krouzky | where: "aktivni", true | sort: "poradi" -%}
+<div class="page-head">
+  <div class="wrap">
+    <span class="eyebrow">Školní rok {{ sr.nazev }}</span>
+    <h1 style="margin-top:10px">Kroužky</h1>
+    <p class="sub">Malé skupiny přímo v dílně v České ulici. Vyberte podle zájmu a věku, rozvrh najdete níže.</p>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="wrap">
+    <div class="notice">
+      <p>Většinu kroužků zřizuje <strong>{{ sr.zrizovatel }}</strong>. Probíhají <strong>{{ sr.od }} – {{ sr.do }}</strong>. {{ sr.prihlasky_text }}</p>
+      <a class="btn btn-primary" href="{{ sr.prihlasky_url }}" rel="noopener">Přihlásit na webu DDM ↗</a>
+    </div>
+
+    <div class="section-head" style="margin-bottom:18px">
+      <h2>Nabídka</h2>
+      <div class="filters" role="group" aria-label="Filtrovat podle zaměření" data-filters>
+        <button class="chip" type="button" aria-pressed="true" data-filter="">Vše</button>
+        {%- assign pouzite = vsechny | map: "kategorie" | uniq %}
+        {%- for kl in pouzite %}
+        <button class="chip" type="button" aria-pressed="false" data-filter="{{ kl }}">{{ site.data.kategorie[kl].nazev }}</button>
+        {%- endfor %}
+      </div>
+    </div>
+    <div class="cards" data-cards>
+      {% for k in vsechny %}{% include krouzek-karta.html k=k %}{% endfor %}
+    </div>
+
+    <div class="section-head" style="margin-top:56px;margin-bottom:18px">
+      <div>
+        <h2 id="rozvrh">Týden v dílně</h2>
+        <p>Pravidelný rozvrh kroužků. Jednorázové akce a workshopy jsou v <a href="/kalendar/">kalendáři</a>.</p>
+      </div>
+    </div>
+    {% include rozvrh.html %}
+
+    <p style="margin-top:40px;color:var(--muted)">Nevíte si rady s výběrem nebo máte speciální požadavky? <a href="/kontakty/">Neváhejte nás kontaktovat.</a></p>
+  </div>
+</div>

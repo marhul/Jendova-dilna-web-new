@@ -2,7 +2,9 @@
 layout: post
 title: Pozvánka na promítání z cestování po Guatemale
 date: 15.1.2026
-cover_image: /img/20260125_PrednaskaGuatemala.jpg
+typ: Cestovatelský večer
+akce_datum: 2026-01-25 18:00
+cover_image: /img/20260125_prednaskaguatemala.jpg
 ---
 Zveme vás na cestovatelský večer věnovaný Guatemale – zemi sopek, džungle, mayských památek a barevných tradic. Pětice cestovatelů (Mája, Pája, Rendi, Kája a Péťa) se s vámi podělí o své zážitky z této fascinující středoamerické země prostřednictvím fotografií, vyprávění i osobních postřehů z cesty.
 

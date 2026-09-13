@@ -1,0 +1,13 @@
+# Měsíce ve 2. pádě a zkratky pro kalendářní štítek
+- { gen: ledna, zkr: led }
+- { gen: února, zkr: úno }
+- { gen: března, zkr: bře }
+- { gen: dubna, zkr: dub }
+- { gen: května, zkr: kvě }
+- { gen: června, zkr: čvn }
+- { gen: července, zkr: čvc }
+- { gen: srpna, zkr: srp }
+- { gen: září, zkr: zář }
+- { gen: října, zkr: říj }
+- { gen: listopadu, zkr: lis }
+- { gen: prosince, zkr: pro }

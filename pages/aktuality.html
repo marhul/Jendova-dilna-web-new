@@ -1,0 +1,19 @@
+---
+layout: default
+title: Aktuality
+description: Pozvánky na workshopy, cestovatelské večery a novinky z Jendovy dílny.
+permalink: /aktuality/
+---
+<div class="page-head">
+  <div class="wrap">
+    <h1>Aktuality</h1>
+    <p class="sub">Pozvánky na workshopy, cestovatelské večery a novinky z dílny.</p>
+  </div>
+</div>
+<div class="page-body">
+  <div class="wrap">
+    <div class="posts">
+      {% for p in site.posts %}{% include post-karta.html p=p %}{% endfor %}
+    </div>
+  </div>
+</div>

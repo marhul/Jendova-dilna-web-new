@@ -1,0 +1,51 @@
+---
+layout: default
+title: O spolku
+description: Spolek Jendova dílna vytváří v Českých Budějovicích místo pro tvoření, setkávání a sdílení. Nese jméno Jana „Jendy“ Vacky.
+permalink: /o-spolku/
+---
+{%- assign s = site.data.nastaveni -%}
+<div class="page-head">
+  <div class="wrap">
+    <h1>O spolku</h1>
+    <p class="sub">Živé a přátelské místo pro setkávání, tvoření a sdílení v Českých Budějovicích.</p>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="wrap">
+    <div class="story">
+      <blockquote>
+        „Chceme, aby to nejdůležitější zůstalo dál: radost z tvorby, lidskost a chuť být spolu.“
+      </blockquote>
+      <div class="prose">
+        <p>Jendova dílna nese jméno <strong>Jana „Jendy“ Vacky</strong> – mladého keramika s velkým srdcem, talentem a láskou k rodině, přátelům, dětem i přírodě.</p>
+        <p>V roce 2025 nás Jan ve věku 21 let náhle opustil. Spolek vznikl z potřeby vytvořit v Českých Budějovicích místo, kde bude jeho radost z tvoření žít dál.</p>
+      </div>
+    </div>
+
+    <h2 style="margin:64px 0 18px">Na čem stojíme</h2>
+    <ul class="values">
+      <li><h3>Přátelství</h3><p style="margin-top:6px;color:var(--muted)">Sounáležitost a bezpečný prostor pro děti i dospělé.</p></li>
+      <li><h3>Ruční práce</h3><p style="margin-top:6px;color:var(--muted)">Kreativita a radost z vlastního výrobku.</p></li>
+      <li><h3>Komunita</h3><p style="margin-top:6px;color:var(--muted)">Smysluplné volnočasové aktivity, které propojují lidi.</p></li>
+    </ul>
+
+    <div class="prose" style="margin-top:40px">
+      <h2>Údaje o spolku</h2>
+      <p><strong>Název:</strong> {{ s.nazev_spolku }}<br>
+      <strong>IČO:</strong> {{ s.ico }}<br>
+      <strong>Sídlo dílny:</strong> {{ s.adresa }}</p>
+      <p><strong>Účel spolku:</strong> Vytvářet a podporovat prostor pro kulturní, vzdělávací, společenské a sportovní a jiné zájmové aktivity, které přispívají k rozvoji osobnosti, tvořivosti, komunity a vzájemné solidarity.</p>
+    </div>
+
+    <div class="support" id="podpora" style="margin-top:56px;scroll-margin-top:100px">
+      <div>
+        <h2>Podpořte dílnu</h2>
+        <p>Příspěvky na provoz spolku i dary můžete posílat na účet spolku. Na přijatou platbu vystavíme potvrzení o finančním daru – do zprávy pro příjemce prosím uveďte e-mail, na který ho pošleme.</p>
+        <p class="acc">{{ s.ucet }}</p>
+      </div>
+      {% if s.qr_platba %}<img src="{{ s.qr_platba }}" alt="QR platba na účet spolku {{ s.ucet }}">{% endif %}
+    </div>
+  </div>
+</div>

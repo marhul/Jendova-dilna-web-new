@@ -1,90 +1,155 @@
+# Konfigurace administrace Pages CMS (https://pagescms.org)
+
 media:
-  # Obrázky
   - name: images
     label: Obrázky
     input: img
-    public_folder: /img
-    media_folder: img
-
-  # Další assets (CSS, JS, dokumenty)
-  - name: assets
-    label: Assets
-    input: assets
-    public_folder: /assets
-    media_folder: assets
+    output: /img
+    categories: [image]
+  - name: galerie
+    label: Galerie (fotky se zobrazí automaticky)
+    input: img/photos
+    output: /img/photos
+    categories: [image]
 
 content:
-  # Aktuality
+  # Aktuality a pozvánky na akce
   - name: posts
     label: Aktuality
     type: collection
-    path: _posts/
-    filter:
-      include: "*.md"
+    path: _posts
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      fields: [title, akce_datum, date]
+      sort: [date]
+      default: { sort: date, order: desc }
     fields:
-      - name: layout
-        label: Layout
-        type: string
-        default: post
-      - name: title
-        label: Titulek
-        type: string
-      - name: date
-        label: Datum
-        type: datetime
-      - name: cover_image
-        label: Hlavní obrázek
-        type: image
-        required: false
-        public_folder: /img
-        media_folder: img
-      - name: body
-        label: Obsah
-        type: markdown-body
+      - { name: layout, type: string, default: post, hidden: true }
+      - { name: title, label: Titulek, type: string, required: true }
+      - { name: date, label: Datum zveřejnění, type: date, required: true }
+      - name: typ
+        label: Typ
+        type: select
+        options: { values: [Workshop, Cestovatelský večer, Kroužek, Setkání, Novinka] }
+      - name: akce_datum
+        label: Kdy se akce koná
+        type: date
+        options: { time: true, format: "yyyy-MM-dd HH:mm" }
+        description: Vyplňte u pozvánek. Akce se pak sama ukáže v „Nejbližší v dílně“ na úvodní stránce a po termínu zmizí.
+      - { name: cover_image, label: Hlavní obrázek, type: image, options: { media: images } }
+      - { name: body, label: Text, type: rich-text }
 
-  # Ostatní stránky
+  # Kroužky – z těchto záznamů se skládají karty i týdenní rozvrh
+  - name: krouzky
+    label: Kroužky
+    type: collection
+    path: _krouzky
+    filename: "{primary}.md"
+    view:
+      fields: [title, den, cas_od, lektor, aktivni]
+      default: { sort: poradi, order: asc }
+    fields:
+      - { name: title, label: Název, type: string, required: true }
+      - { name: aktivni, label: Zobrazit na webu, type: boolean, default: true }
+      - name: kategorie
+        label: Kategorie
+        type: select
+        required: true
+        options:
+          values:
+            - { value: keramika, label: Keramika }
+            - { value: veda, label: Věda a pokusy }
+            - { value: recyklace, label: Recyklace }
+            - { value: jazyky, label: Jazyky }
+            - { value: technika, label: Technika }
+      - { name: vek, label: Věk, type: string, description: "Např. 6–12 let" }
+      - name: den
+        label: Den v týdnu
+        type: select
+        required: true
+        options:
+          values:
+            - { value: po, label: Pondělí }
+            - { value: ut, label: Úterý }
+            - { value: st, label: Středa }
+            - { value: ct, label: Čtvrtek }
+            - { value: pa, label: Pátek }
+            - { value: so, label: Sobota }
+            - { value: ne, label: Neděle }
+      - { name: cas_od, label: Začátek, type: string, description: "Formát HH:MM, např. 16:30" }
+      - { name: cas_do, label: Konec, type: string, description: "Formát HH:MM" }
+      - { name: cena, label: Cena, type: string, description: "Např. 1900 Kč / školní rok" }
+      - { name: termin, label: Termín (jen u kurzů s omezeným obdobím), type: string }
+      - { name: lektor, label: Lektor, type: string, description: "Jméno přesně jako v sekci Lektoři, aby se kroužek propojil s profilem" }
+      - { name: prihlaska_url, label: Odkaz na přihlášku, type: string }
+      - { name: prihlaska_text, label: Text tlačítka přihlášky, type: string, default: Přihláška na webu DDM }
+      - { name: prihlaska_poznamka, label: Poznámka k přihlášce, type: string }
+      - { name: perex, label: Krátký popis na kartu, type: text, description: "Nepovinné. Když chybí, použije se začátek textu." }
+      - { name: podtitul, label: Podtitul na stránce kroužku, type: string }
+      - { name: lekci, label: Počet lekcí, type: number }
+      - { name: kapacita, label: Kapacita, type: string }
+      - { name: poradi, label: Pořadí, type: number, default: 100 }
+      - { name: body, label: Popis a osnova, type: rich-text }
+
+  # Lektoři
+  - name: lektori
+    label: Lektoři
+    type: collection
+    path: _lektori
+    filename: "{primary}.md"
+    view:
+      fields: [jmeno, poradi]
+    fields:
+      - { name: jmeno, label: Jméno, type: string, required: true }
+      - { name: foto, label: Fotka, type: image, options: { media: images } }
+      - name: dalsi_kurzy
+        label: Další kurzy mimo nabídku kroužků
+        type: string
+        list: true
+      - { name: poradi, label: Pořadí, type: number, default: 100 }
+      - { name: body, label: Medailonek, type: rich-text }
+
+  # Jednoduché stránky (workshopy apod.)
   - name: pages
     label: Stránky
     type: collection
-    path: pages/
-    filter:
-      include: '*.md'
+    path: pages
+    filter: { include: "*.md" }
     fields:
-      - name: layout
-        label: Layout
-        type: string
-      - name: title
-        label: Titulek
-        type: string
-      - name: subtitle
-        label: Podtitulek
-        type: string
-      - name: body
-        label: Obsah
-        type: markdown-body
-      - name: cover_image
-        label: Hlavní obrázek
-        type: image
-        required: false
-        hint: "Vyber obrázek pro stránku z img/ nebo nahraj nový"
-      - name: gallery
-        label: Galerie obrázků
-        type: list
-        of:
-          type: image
-        required: false
-        hint: "Drag-and-drop galerie: nahrávej více obrázků, měň pořadí tažením"
-        # povolit drag-and-drop v CMS
-        sortable: true
-        allow_multiple: true
+      - { name: layout, type: string, default: page, hidden: true }
+      - { name: title, label: Titulek, type: string, required: true }
+      - { name: subtitle, label: Podtitul, type: string }
+      - { name: permalink, label: Adresa (např. /workshop/), type: string }
+      - { name: body, label: Obsah, type: rich-text }
 
-settings:
-  content:
-    merge: true
-  media_library:
-    allow_upload: true
-    accepted_types:
-      - image/jpeg
-      - image/png
-      - image/gif
-      - image/svg+xml
+  # Kontakty, účet, školní rok
+  - name: nastaveni
+    label: Nastavení webu
+    type: file
+    path: _data/nastaveni.yml
+    format: yaml
+    fields:
+      - { name: nazev_spolku, label: Název spolku, type: string }
+      - { name: ico, label: IČO, type: string }
+      - { name: adresa, label: Adresa, type: string }
+      - { name: mapa_url, label: Odkaz na mapu, type: string }
+      - { name: email, label: E-mail, type: string }
+      - { name: telefon, label: Telefon, type: string }
+      - { name: ucet, label: Číslo účtu, type: string }
+      - { name: qr_platba, label: QR platba, type: image, options: { media: images } }
+      - { name: facebook, label: Facebook, type: string }
+      - { name: instagram, label: Instagram, type: string }
+      - { name: whatsapp, label: WhatsApp skupina (pozvánka), type: string }
+      - { name: kalendar_url, label: Adresa kalendáře, type: string }
+      - name: skolni_rok
+        label: Školní rok
+        type: object
+        fields:
+          - { name: nazev, label: Název, type: string, description: "Např. 2026/27" }
+          - { name: od, label: Začátek (text), type: string }
+          - { name: do, label: Konec (text), type: string }
+          - { name: zacatek, label: Začátek (pro úvodní stránku), type: string, description: "Formát YYYY-MM-DD 00:00" }
+          - { name: zrizovatel, label: Zřizovatel, type: string }
+          - { name: prihlasky_url, label: Odkaz na přihlášky, type: string }
+          - { name: prihlasky_text, label: Text o přihláškách, type: string }
+

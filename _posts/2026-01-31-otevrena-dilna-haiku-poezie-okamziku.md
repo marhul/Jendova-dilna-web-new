@@ -2,6 +2,8 @@
 layout: post
 title: Otevřená dílna haiku – poezie okamžiku
 date: 31.1.2026
+typ: Workshop
+akce_datum: 2026-03-01 16:00
 cover_image: /img/73591897-499c-4748-8412-bfb7dae61a8d.jpg
 ---
 Zveme vás na literární workshop věnovaný haiku – nejkratší básnické formě, která v sobě dokáže nést celý svět. Haiku pracuje s obrazem, tichem a všímavostí k přítomnému okamžiku. Je jednoduché na pochopení, ale hluboké v možnostech vyjádření.

@@ -1,54 +1,59 @@
-# Aktivace vzdáleného tématu Beautiful Jekyll
-remote_theme: daattali/beautiful-jekyll
+# Jendova dílna – vlastní šablona (bez Beautiful Jekyll)
 
-# GitHub Pages nastavení pro vlastní doménu
+title: Jendova dílna
+tagline: Místo pro tvoření, které nese Jendovo jméno
+description: Spolek Jendova dílna v Českých Budějovicích – keramika, kroužky pro děti, workshopy a cestovatelské večery.
+lang: cs
+locale: cs_CZ
+
+url: "https://new.jendovadilna.cz"
 baseurl: ""
-url: "https://jendovadilna.cz"
 
-# Aktivace potřebných pluginů
+# true = testovací web: noindex pro vyhledávače a pruh „testovací verze“.
+# Při překlopení na jendovadilna.cz přepnout na false a změnit url.
+staging: true
+
+timezone: Europe/Prague
+permalink: /:year/:month/:day/:title:output_ext
+
 plugins:
-  - jekyll-remote-theme
   - jekyll-sitemap
   - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-redirect-from
 
-# Informace o webu
-title: Jendova dílna
-description: Kreativní a keramická dílna v Českých Budějovicích
+collections:
+  krouzky:
+    output: true
+    permalink: /krouzky/:name/
+  lektori:
+    output: false
 
-# Logo a avatar
-avatar: /img/jendovadilnaspolek_logo_200x200.png
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+  - scope: { path: "", type: krouzky }
+    values: { layout: krouzek }
+  - scope: { path: "pages" }
+    values: { layout: page }
 
-# Navigační menu
-navbar-links:
-  Kroužky: "index"
-  Naši lektoři: "lektori"
-  Aktuality: "aktuality"
-  Kalendář: "kalendar"
-  Galerie: "galerie"
-  Kontakty: "kontakty"
+logo: /img/jendovadilnaspolek_logo_200x200.png
+image: /img/jendovadilnaspolek_logo_200x200.png
 
-# Nastavení footer
-author: Jendova dílna
+navigace:
+  - { title: Kroužky, url: /krouzky/ }
+  - { title: Akce a kalendář, url: /kalendar/ }
+  - { title: Aktuality, url: /aktuality/ }
+  - { title: Lektoři, url: /lektori/ }
+  - { title: Galerie, url: /galerie/ }
+  - { title: O spolku, url: /o-spolku/ }
+  - { title: Kontakt, url: /kontakty/ }
 
-# Sociální sítě v patičce
-social-network-links:
-  email: "kontakt@jendovadilna.cz"
-  facebook: profile.php?id=61584506087116
-  instagram: jendovadilna.cz
-  # patreon: jendovadilna
-
-# Vzhled
-navbar-col: "#EAEAEA"
-navbar-text-col: "#404040"
-navbar-border-col: "#DDDDDD"
-page-col: "#FFFFFF"
-text-col: "#404040"
-link-col: "#008AFF"
-hover-col: "#0085A1"
-footer-col: "#FFFFFF"
-footer-text-col: "#777777"
-footer-link-col: "#404040"
-
-# Vlastní CSS
-site-css:
-  - "/assets/css/custom-styles.css"
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - docker-compose.yml
+  - tools/
+  - vendor/
+  - .pages.yml

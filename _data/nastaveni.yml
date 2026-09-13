@@ -1,0 +1,26 @@
+# Kontaktní a spolkové údaje – upravují se v Pages CMS v sekci „Nastavení webu“
+
+nazev_spolku: Spolek Jendova dílna
+ico: "23827297"
+adresa: Česká 245/33, 370 01 České Budějovice
+mapa_url: https://mapy.com/s/modafovuvo
+email: info@jendovadilna.cz
+telefon: "+420 776 777 528"
+
+ucet: 278828128/0600
+qr_platba: /img/qrplatba_financnidar.png
+
+facebook: https://www.facebook.com/profile.php?id=61584506087116
+instagram: https://www.instagram.com/jendovadilna.cz
+whatsapp: ""
+
+kalendar_url: https://kalendar.jendovadilna.cz
+
+skolni_rok:
+  nazev: "2026/27"
+  od: 14. 9. 2026
+  do: 31. 5. 2027
+  zacatek: "2026-09-14 00:00"
+  zrizovatel: DDM České Budějovice
+  prihlasky_url: https://www.ddmcb.cz/krouzky
+  prihlasky_text: Přihlašování je možné pouze on-line na webu DDM.

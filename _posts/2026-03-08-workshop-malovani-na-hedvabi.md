@@ -2,7 +2,9 @@
 layout: post
 title: "Workshop: Malování na hedvábí"
 date: 8.3.2026
-cover_image: /img/hedvábí.jpg
+typ: Workshop
+akce_datum: 2026-04-08 18:00
+cover_image: /img/hedvabi.jpg
 ---
 V Jendově dílně je nově vypsán výtvarný workshop malování na hedvábí, určený pro začátečníky i mírně pokročilé. Účastníci si vyzkouší akvarelovou techniku rozpíjení barev na hedvábí a vytvoří si vlastní originální motiv.
 

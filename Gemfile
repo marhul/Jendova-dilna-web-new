@@ -1,20 +1,11 @@
 source "https://rubygems.org"
 
-# Pro použití vzdáleného tématu (remote theme)
-gem "jekyll"
-gem "jekyll-remote-theme"
+# Stejná sada gemů a verzí jako při buildu na GitHub Pages
+gem "github-pages", group: :jekyll_plugins
 
-# Doporučené gemy pro SEO a funkčnost Beautiful Jekyll
-gem "jekyll-sitemap"
-gem "jekyll-feed"
-
-# Opatření proti LoadError v Ruby 3.4.x
+# Ruby 3.4+ už tyto knihovny nemá ve výchozí instalaci
 gem "csv"
 gem "logger"
 gem "base64"
 gem "bigdecimal"
-
-# Pro lokální vývoj
-group :development do
-  gem "jekyll-watch"
-end
+gem "webrick"

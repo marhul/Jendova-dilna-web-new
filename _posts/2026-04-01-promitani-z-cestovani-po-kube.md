@@ -2,7 +2,9 @@
 layout: post
 title: Promítání z cestování po Kubě
 date: 1.4.2026
-cover_image: /img/kuba_11042026.jpeg
+typ: Cestovatelský večer
+akce_datum: 2026-04-12 18:00
+cover_image: /img/kuba_11042026.jpg
 ---
 Zveme vás na cestovatelský večer věnovaný Kubě, kterou jsme navštívili koncem minulého roku. A vzhledem k událostem, které se na Kubě dějí v současné době, je dost možné, že se tam v dohledné době jen tak někdo z nás nepodívá.
 

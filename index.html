@@ -1,0 +1,103 @@
+---
+layout: default
+title: Jendova dílna
+description: Keramika, kroužky pro děti, workshopy a cestovatelské večery v České ulici v Českých Budějovicích.
+---
+{%- assign s = site.data.nastaveni -%}
+{%- assign sr = s.skolni_rok -%}
+{%- assign akce = site.posts | where_exp: "p", "p.akce_datum" | sort: "akce_datum" -%}
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Spolek v České ulici · České Budějovice</span>
+      <h1 style="margin-top:14px">Místo pro tvoření, které nese <span class="hl">Jendovo jméno</span></h1>
+      <p class="lede">Keramika, pokusy, recyklace, 3D tisk i cestovatelské večery. Pro děti od 5 let, mládež i dospělé, v malých skupinách a přátelské atmosféře.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="/krouzky/">Vybrat kroužek</a>
+        <a class="btn btn-ghost" href="/o-spolku/">Příběh spolku</a>
+      </div>
+      <div class="hero-meta">
+        <span>Kroužky <strong>{{ sr.od }} – {{ sr.do }}</strong></span>
+        <span><strong>{{ site.krouzky | where: "aktivni", true | size }}</strong> kroužků v nabídce</span>
+      </div>
+    </div>
+
+    <aside class="upcoming" aria-labelledby="nejblizsi">
+      <span class="eyebrow" id="nejblizsi">Nejbližší v dílně</span>
+      <ul class="upcoming-list" data-upcoming data-limit="3">
+        <li class="upcoming-item" data-date="{{ sr.zacatek | date: '%Y-%m-%d' }}">
+          {% include datum.html d=sr.zacatek format="box" %}
+          <div><a href="/krouzky/">Začínají kroužky {{ sr.nazev }}</a><div class="meta">Přihlášky přes {{ sr.zrizovatel }}</div></div>
+        </li>
+        {%- for p in akce %}
+        <li class="upcoming-item" data-date="{{ p.akce_datum | date: '%Y-%m-%d' }}">
+          {% include datum.html d=p.akce_datum format="box" %}
+          <div><a href="{{ p.url }}">{{ p.title }}</a><div class="meta">{{ p.typ }}{% assign cas = p.akce_datum | date: "%H:%M" %}{% if cas != "00:00" %} · od {{ cas }}{% endif %}</div></div>
+        </li>
+        {%- endfor %}
+      </ul>
+      <p class="upcoming-empty" data-upcoming-empty hidden>Další akce právě chystáme. Sledujte kalendář nebo náš Facebook.</p>
+      <div class="upcoming-foot"><a href="/kalendar/">Celý kalendář akcí →</a></div>
+    </aside>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Školní rok {{ sr.nazev }}</span>
+        <h2 style="margin-top:8px">Kroužky v dílně</h2>
+        <p>Malé skupiny, zkušení lektoři a výrobky, které si děti odnesou domů.</p>
+      </div>
+      <a class="btn btn-ghost" href="/krouzky/">Všechny kroužky a rozvrh</a>
+    </div>
+    <div class="cards">
+      {% assign vyber = site.krouzky | where: "aktivni", true | sort: "poradi" %}
+      {% for k in vyber limit: 6 %}{% include krouzek-karta.html k=k %}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap story">
+    <blockquote>
+      „Chceme, aby to nejdůležitější zůstalo dál: radost z tvorby, lidskost a chuť být spolu.“
+      <footer>Dílna nese jméno Jana „Jendy“ Vacky, mladého keramika, který nás v roce 2025 ve 21 letech náhle opustil.</footer>
+    </blockquote>
+    <div class="prose">
+      <p>Spolek vznikl z potřeby vytvořit v Českých Budějovicích živé a přátelské místo pro setkávání, tvoření a sdílení. Stavíme na přátelství, ruční práci a smysluplném volném čase, který propojuje komunitu.</p>
+      <p><a href="/o-spolku/">Přečtěte si příběh spolku →</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Aktuality</span>
+        <h2 style="margin-top:8px">Co se v dílně dělo a chystá</h2>
+      </div>
+      <a class="btn btn-ghost" href="/aktuality/">Všechny aktuality</a>
+    </div>
+    <div class="posts">
+      {% for p in site.posts limit: 3 %}{% include post-karta.html p=p %}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="support">
+      <div>
+        <h2>Podpořte Jendovu dílnu</h2>
+        <p>Příspěvky na provoz spolku i dary můžete posílat na účet spolku. Na přijatou platbu vystavíme potvrzení o finančním daru.</p>
+        <p class="acc">{{ s.ucet }}</p>
+        <div class="btn-row" style="margin-top:18px"><a class="btn btn-ochre" href="/o-spolku/#podpora">Jak přispět</a></div>
+      </div>
+      {% if s.qr_platba %}<img src="{{ s.qr_platba }}" alt="QR platba na účet spolku {{ s.ucet }}">{% endif %}
+    </div>
+  </div>
+</section>

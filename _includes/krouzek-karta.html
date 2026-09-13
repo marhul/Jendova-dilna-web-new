@@ -1,0 +1,21 @@
+{%- assign k = include.k -%}
+{%- assign kat = site.data.kategorie[k.kategorie] -%}
+{%- assign den = site.data.dny[k.den] -%}
+<article class="card" data-kategorie="{{ k.kategorie }}">
+  <div class="tags">
+    {% if kat %}<span class="tag" style="background:{{ kat.barva }};color:{{ kat.text }}">{{ kat.nazev }}</span>{% endif %}
+    {% if k.vek %}<span class="tag">{{ k.vek }}</span>{% endif %}
+    {% if den %}<span class="tag">{{ den.zkratka }} {{ k.cas_od }}–{{ k.cas_do }}</span>{% endif %}
+  </div>
+  <h3><a href="{{ k.url }}">{{ k.title }}</a></h3>
+  <p class="desc">{% if k.perex %}{{ k.perex }}{% else %}{{ k.content | strip_html | truncatewords: 32 }}{% endif %}</p>
+  {% if k.termin %}<p class="desc"><strong>Termín:</strong> {{ k.termin }}</p>{% endif %}
+  <div class="card-foot">
+    <span class="who">{{ k.lektor }}</span>
+    {% if k.cena and k.cena != "" %}<span class="price">{{ k.cena }}</span>{% endif %}
+  </div>
+  <div class="card-links">
+    <a href="{{ k.url }}">Podrobnosti</a>
+    {% if k.prihlaska_url and k.prihlaska_url != "" %}<a href="{{ k.prihlaska_url }}" rel="noopener">{{ k.prihlaska_text | default: "Přihláška" }} ↗</a>{% endif %}
+  </div>
+</article>
