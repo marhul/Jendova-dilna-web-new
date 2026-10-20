@@ -3,11 +3,11 @@ title: Kroužek 3D tisku
 podtitul: Tvoření, technologie a vlastní robůtek v Jendově dílně
 kategorie: technika
 vek: doporučeno 5–7 let
-den: po
+den: ct
 cas_od: "16:30"
 cas_do: "18:00"
 cena: 1200 Kč / dítě / pololetí
-termin: 2. 2. 2026 – 22. 6. 2026
+termin: 17. 9. 2026 – 28. 1. 2027
 lekci: 19
 obsazeno: true
 kapacita: Obsazeno – max. 8 dětí
