@@ -10,7 +10,7 @@ layout: default
         {% if page.akce_datum %}<span>Kdy: <strong>{% include datum.html d=page.akce_datum %}</strong></span>{% endif %}
         <span>Zveřejněno {{ page.date | date: "%-d. %-m. %Y" }}</span>
       </div>
-      {% if page.cover_image %}<img class="cover" src="{{ page.cover_image }}" alt="">{% endif %}
+      {% if page.cover_image %}<img class="cover{% if page.cover_fit == 'contain' %} contain{% endif %}" src="{{ page.cover_image }}" alt="{{ page.title }}">{% endif %}
     </header>
     <div class="prose">
       {{ content }}

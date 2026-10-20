@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Jendova dílna
-description: Keramika, kroužky pro děti, workshopy a cestovatelské večery v České ulici v Českých Budějovicích.
+description: Keramika, kroužky pro děti i seniory, workshopy a cestovatelské večery v České ulici v Českých Budějovicích.
 ---
 {%- assign s = site.data.nastaveni -%}
 {%- assign sr = s.skolni_rok -%}
@@ -12,7 +12,7 @@ description: Keramika, kroužky pro děti, workshopy a cestovatelské večery v 
     <div>
       <span class="eyebrow">Spolek v České ulici · České Budějovice</span>
       <h1 style="margin-top:14px">Místo pro tvoření, které nese <span class="hl">Jendovo jméno</span></h1>
-      <p class="lede">Keramika, pokusy, recyklace, 3D tisk i cestovatelské večery. Pro děti od 5 let, mládež i dospělé, v malých skupinách a přátelské atmosféře.</p>
+      <p class="lede">Keramika, pokusy, 3D tisk i cestovatelské večery. Pro děti od 5 let, mládež, dospělé i seniory, v malých skupinách a přátelské atmosféře.</p>
       <div class="btn-row">
         <a class="btn btn-primary" href="/krouzky/">Vybrat kroužek</a>
         <a class="btn btn-ghost" href="/o-spolku/">Příběh spolku</a>
@@ -28,7 +28,7 @@ description: Keramika, kroužky pro děti, workshopy a cestovatelské večery v 
       <ul class="upcoming-list" data-upcoming data-limit="3">
         <li class="upcoming-item" data-date="{{ sr.zacatek | date: '%Y-%m-%d' }}">
           {% include datum.html d=sr.zacatek format="box" %}
-          <div><a href="/krouzky/">Začínají kroužky {{ sr.nazev }}</a><div class="meta">Přihlášky přes {{ sr.zrizovatel }}</div></div>
+          <div><a href="/krouzky/">Začínají kroužky {{ sr.nazev }}</a><div class="meta">Přihlášky e-mailem</div></div>
         </li>
         {%- for p in akce %}
         <li class="upcoming-item" data-date="{{ p.akce_datum | date: '%Y-%m-%d' }}">
@@ -53,6 +53,7 @@ description: Keramika, kroužky pro děti, workshopy a cestovatelské večery v 
       </div>
       <a class="btn btn-ghost" href="/krouzky/">Všechny kroužky a rozvrh</a>
     </div>
+      <figure class="course-promo"><img src="/img/keramika-pro-seniory-2026.png" alt="Plakát kurzu keramiky pro seniory, pondělí od 15:00 do 16:00"></figure>
     <div class="cards">
       {% assign vyber = site.krouzky | where: "aktivni", true | sort: "poradi" %}
       {% for k in vyber limit: 6 %}{% include krouzek-karta.html k=k %}{% endfor %}

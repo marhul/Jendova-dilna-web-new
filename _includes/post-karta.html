@@ -1,7 +1,7 @@
 {%- assign p = include.p -%}
 <a class="post-card" href="{{ p.url }}">
   {%- if p.cover_image %}
-  <div class="ph"><img src="{{ p.cover_image }}" alt="" loading="lazy"></div>
+  <div class="ph"><img{% if p.cover_fit == "contain" %} class="contain"{% endif %} src="{{ p.cover_image }}" alt="" loading="lazy"></div>
   {%- else %}
   <div class="ph empty" aria-hidden="true">JD</div>
   {%- endif %}

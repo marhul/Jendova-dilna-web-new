@@ -1,5 +1,5 @@
 ---
-title: Kroužek 3D tisku a robotiky
+title: Kroužek 3D tisku
 podtitul: Tvoření, technologie a vlastní robůtek v Jendově dílně
 kategorie: technika
 vek: doporučeno 5–7 let
@@ -9,13 +9,13 @@ cas_do: "18:00"
 cena: 1200 Kč / dítě / pololetí
 termin: 2. 2. 2026 – 22. 6. 2026
 lekci: 19
-kapacita: max. 8 dětí
+obsazeno: true
+kapacita: Obsazeno – max. 8 dětí
 lektor: Martin Hulík
-prihlaska_url: https://jendova-dilna.reenio.cz/cs/term/P1414053/
-prihlaska_text: Přihláška v rezervačním systému Reenio
-prihlaska_poznamka: V kalendáři Reenio klikněte na událost „Kroužek 3D tisku“.
+prihlaska_url: mailto:info@jendovadilna.cz?subject=Krou%C5%BEek%203D%20tisku
+prihlaska_text: Dotaz na náhradníka
 perex: Základy 3D modelování a tisku, gravírování a recyklace plastů. Během kroužku děti postaví dálkově ovládaného robůtka ze stavebnice CyberBrick, kterého si na konci mohou odkoupit.
-poradi: 70
+poradi: 60
 aktivni: true
 permalink: /krouzek3dtisku/
 redirect_from:

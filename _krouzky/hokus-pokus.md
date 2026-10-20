@@ -7,8 +7,8 @@ cas_od: "16:30"
 cas_do: "18:00"
 cena: 1900 Kč / školní rok
 lektor: Iva Rottnerová
-prihlaska_url: https://www.ddmcb.cz/krouzky
-prihlaska_text: Přihláška na webu DDM
+prihlaska_url: mailto:info@jendovadilna.cz
+prihlaska_text: Přihlásit se e-mailem
 poradi: 20
 aktivni: true
 ---
