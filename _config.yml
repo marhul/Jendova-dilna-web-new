@@ -6,12 +6,12 @@ description: Spolek Jendova dílna v Českých Budějovicích – keramika, krou
 lang: cs
 locale: cs_CZ
 
-url: "https://new.jendovadilna.cz"
+url: "https://jendovadilna.cz"
 baseurl: ""
 
 # true = testovací web: noindex pro vyhledávače a pruh „testovací verze“.
-# Při překlopení na jendovadilna.cz přepnout na false a změnit url.
-staging: true
+# Ostrý web na jendovadilna.cz = false.
+staging: false
 
 timezone: Europe/Prague
 permalink: /:year/:month/:day/:title:output_ext

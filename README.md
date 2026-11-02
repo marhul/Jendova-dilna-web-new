@@ -23,16 +23,9 @@ docker compose up
 
 Web běží na http://localhost:4000 a při uložení souboru se obnoví.
 
-## Testovací web new.jendovadilna.cz
+## Doména a testovací režim
 
-- `CNAME` obsahuje `new.jendovadilna.cz`
-- `staging: true` v `_config.yml` přidá `noindex`, zakáže roboty a zobrazí pruh „Testovací verze“
-
-## Překlopení na jendovadilna.cz
-
-1. V `_config.yml` nastavit `url: "https://jendovadilna.cz"` a `staging: false`.
-2. `CNAME` přepsat na `jendovadilna.cz`.
-3. Obsah větve nahrát do původního repozitáře `marhul/Jendova-dilna-web` (větev `main`).
-4. V Pages CMS přepnout repozitář zpět na původní.
+- Web běží na `jendovadilna.cz` (soubor `CNAME`, `url` v `_config.yml`).
+- `staging: true` v `_config.yml` by přidal `noindex`, zakázal roboty a zobrazil pruh „Testovací verze“. Na ostrém webu musí být `false`.
 
 Staré adresy zůstávají funkční: `/kalendar2/`, `/index/`, `/workshop3D/` a `/2025/12/21/test-prispevek.html` přesměrovává `jekyll-redirect-from`.
