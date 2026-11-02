@@ -3,9 +3,9 @@ title: Keramika pro seniory
 kategorie: keramika
 vek: Senioři
 den: po
-cas_od: "15:00"
-cas_do: "16:00"
-cena: 1300 Kč / listopad–leden
+cas_od: "14:15"
+cas_do: "15:45"
+cena: 1600 Kč / listopad–leden
 termin: 2. 11. 2026 – leden 2027
 prihlaska_url: mailto:info@jendovadilna.cz
 prihlaska_text: Přihlásit se e-mailem
