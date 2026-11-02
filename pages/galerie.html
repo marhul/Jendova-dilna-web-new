@@ -4,6 +4,15 @@ title: Galerie
 description: Fotografie z Jendovy dílny.
 permalink: /galerie/
 ---
+{%- comment -%}
+  Galerie se skládá sama:
+  1) „Ze života dílny“ = všechny fotky ve složce img/photos/ (kromě fotek lektorů),
+  2) pak jedna skupina za každou aktualitu, která má fotky ve složce img/aktuality/
+     (hlavní obrázek, fotky pod článkem i obrázky vložené do textu).
+  Plakáty a letáky z ostatních složek se do galerie nedostanou.
+{%- endcomment -%}
+{%- assign fotky = site.static_files | where_exp: "f", "f.path contains '/img/photos/'" %}
+{%- assign fotky_aktualit = site.static_files | where_exp: "f", "f.path contains '/img/aktuality/'" %}
 <div class="page-head">
   <div class="wrap">
     <h1>Galerie</h1>
@@ -12,17 +21,44 @@ permalink: /galerie/
 </div>
 <div class="page-body">
   <div class="wrap">
-    <div class="gallery" data-gallery>
-      {%- assign fotky = site.static_files | where_exp: "f", "f.path contains '/img/photos/'" %}
-      {%- for f in fotky %}
-      {%- assign ext = f.extname | downcase %}
-      {%- unless f.basename contains "lektor" %}
-      {%- if ext == '.jpg' or ext == '.jpeg' or ext == '.png' or ext == '.webp' %}
-      <button type="button" data-src="{{ f.path }}"><img src="{{ f.path }}" alt="Fotografie z dílny" loading="lazy"></button>
-      {%- endif %}
-      {%- endunless %}
-      {%- endfor %}
-    </div>
+    <section class="gallery-group" id="ze-zivota-dilny">
+      <header class="gallery-group-head">
+        <h2>Ze života dílny</h2>
+      </header>
+      <div class="gallery" data-gallery>
+        {%- for f in fotky %}
+        {%- assign ext = f.extname | downcase %}
+        {%- unless f.basename contains "lektor" %}
+        {%- if ext == '.jpg' or ext == '.jpeg' or ext == '.png' or ext == '.webp' %}
+        <button type="button" data-src="{{ f.path }}"><img src="{{ f.path }}" alt="Fotografie z dílny" loading="lazy"></button>
+        {%- endif %}
+        {%- endunless %}
+        {%- endfor %}
+      </div>
+    </section>
+
+    {%- for post in site.posts %}
+    {%- assign fotky_clanku = "" | split: "" %}
+    {%- for f in fotky_aktualit %}
+    {%- if post.cover_image == f.path or post.galerie contains f.path or post.content contains f.path %}
+    {%- assign fotky_clanku = fotky_clanku | push: f.path %}
+    {%- endif %}
+    {%- endfor %}
+    {%- if fotky_clanku.size > 0 %}
+    <section class="gallery-group" id="{{ post.slug }}">
+      <header class="gallery-group-head">
+        <p class="eyebrow">Z aktualit{% if post.typ %} · {{ post.typ }}{% endif %} · {{ post.date | date: "%-d. %-m. %Y" }}</p>
+        <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+        <a class="gallery-group-link" href="{{ post.url }}">Přečíst celý článek →</a>
+      </header>
+      <div class="gallery" data-gallery>
+        {%- for foto in fotky_clanku %}
+        <button type="button" data-src="{{ foto }}" data-caption="Z článku: {{ post.title | escape }}" data-href="{{ post.url }}"><img src="{{ foto }}" alt="Fotografie z článku {{ post.title | escape }}" loading="lazy"></button>
+        {%- endfor %}
+      </div>
+    </section>
+    {%- endif %}
+    {%- endfor %}
   </div>
 </div>
 {% include lightbox.html %}

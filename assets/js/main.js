@@ -54,10 +54,31 @@
   if (gallery && dialog && typeof dialog.showModal === 'function') {
     var buttons = Array.prototype.slice.call(document.querySelectorAll('[data-gallery] [data-src]'));
     var img = dialog.querySelector('img');
+    var cap = dialog.querySelector('[data-lb-cap]');
     var index = 0;
     var show = function (i) {
       index = (i + buttons.length) % buttons.length;
-      img.src = buttons[index].getAttribute('data-src');
+      var b = buttons[index];
+      img.src = b.getAttribute('data-src');
+      var thumb = b.querySelector('img');
+      img.alt = thumb ? thumb.alt : '';
+      // Popisek s odkazem na původní článek (jen u fotek z aktualit)
+      if (cap) {
+        var text = b.getAttribute('data-caption');
+        var href = b.getAttribute('data-href');
+        cap.textContent = '';
+        if (text) {
+          if (href) {
+            var a = document.createElement('a');
+            a.href = href;
+            a.textContent = text + ' →';
+            cap.appendChild(a);
+          } else {
+            cap.textContent = text;
+          }
+        }
+        cap.hidden = !text;
+      }
     };
     buttons.forEach(function (b, i) {
       b.addEventListener('click', function () { show(i); dialog.showModal(); });

@@ -12,7 +12,8 @@ Jekyll web spolku Jendova dílna s vlastní šablonou (bez Beautiful Jekyll). Ob
 | `_data/nastaveni.yml` | Kontakty, účet, sociální sítě, školní rok | Nastavení webu |
 | `_data/kategorie.yml` | Barvy kategorií kroužků | – |
 | `pages/` | Stránky (kroužky, lektoři, galerie, o spolku…) | Stránky (jen `.md`) |
-| `img/photos/` | Fotky galerie, zobrazí se automaticky | Galerie |
+| `img/photos/` | Fotky galerie, zobrazí se automaticky v části „Ze života dílny“ | Galerie |
+| `img/aktuality/` | Fotky z článků; v galerii se samy seskupí pod názvem článku s odkazem | Aktuality, Galerie |
 
 ## Lokální náhled
 
