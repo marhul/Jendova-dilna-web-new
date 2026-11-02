@@ -4,7 +4,7 @@ title: Nový kurz v Jendově dílně
 date: 2026-10-18
 typ: Novinka
 akce_datum: 2026-11-02 14:15
-cover_image: /img/keramika-pro-seniory-2026.png
+cover_image: /img/keramika-pro-seniory-2026-v2.jpg
 cover_fit: contain
 ---
 „Životní zkušenosti se otisknou do každého výrobku.”
